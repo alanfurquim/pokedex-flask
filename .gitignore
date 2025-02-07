@@ -45,8 +45,11 @@ instance/
 *.db-wal
 *.db-shm
 
-#tests
+# Tests
 *.ipynb
 
-cached data
+# Cached data
 *.json
+
+# Api secret
+secrets.key

@@ -10,36 +10,20 @@
 
 <body>
     <h1>POKEDEX</h1>
-    <div class="pokedex-container">
-        <div class="pokemon-card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Bulbasaur">
-            <div class="pokemon-name">Bulbasaur</div>
-            <div class="pokemon-types">
-                <span class="pokemon-type">Grama</span>
-                <span class="pokemon-type">Veneno</span>
+    <input type="text" id="search-bar" placeholder="Enter the name or type of a Pokémon." onkeyup="filterPokemon()" >
+    <div class="pokedex-container" id="pokedex-container">
+        {% for key, pokemon in pokemons.items() %}
+            <div class="pokemon-card">
+                <img src="{{ pokemon.foto }}" alt="{{ pokemon.nome }}">
+                <div class="pokemon-name">{{ pokemon.nome.capitalize() }}</div>
+                <div class="pokemon-types">
+                    {% for tipo in pokemon.tipos %}
+                        <span class="pokemon-type">{{ tipo.capitalize() }}</span>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-        <div class="pokemon-card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" alt="Charmander">
-            <div class="pokemon-name">Charmander</div>
-            <div class="pokemon-types">
-                <span class="pokemon-type">Fogo</span>
-            </div>
-        </div>
-        <div class="pokemon-card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle">
-            <div class="pokemon-name">Squirtle</div>
-            <div class="pokemon-types">
-                <span class="pokemon-type">Água</span>
-            </div>
-        </div>
-        <div class="pokemon-card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu">
-            <div class="pokemon-name">Pikachu</div>
-            <div class="pokemon-types">
-                <span class="pokemon-type">Elétrico</span>
-            </div>
-        </div>
+        {% endfor %}
     </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
